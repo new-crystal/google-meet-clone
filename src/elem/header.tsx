@@ -16,10 +16,13 @@ const Header = () => {
       </ImgBox>
       <TimeBtn>
         <span>{time}</span>
-        <span>/</span>
+        <span>•</span>
         <span>
           {date} ({dayList[dayIndex]})
         </span>
+        <Button></Button>
+        <Button></Button>
+        <Button></Button>
       </TimeBtn>
       <LoginBtn></LoginBtn>
     </Container>
@@ -54,6 +57,14 @@ const TimeBtn = styled.div`
   justify-content: center;
   flex-direction: row;
   font-size: 18px;
+`;
+const Button = styled.button`
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: transparent;
+  outline: none;
+  border: 0px;
 `;
 const LoginBtn = styled.div``;
 export default Header;
