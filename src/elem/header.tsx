@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
 
 const Header = () => {
   const timeList = new Date().toLocaleTimeString().split(":");
@@ -20,7 +21,9 @@ const Header = () => {
         <span>
           {date} ({dayList[dayIndex]})
         </span>
-        <Button></Button>
+        <Button>
+          <FontAwesomeIcon icon="fa-regular fa-circle-question" />
+        </Button>
         <Button></Button>
         <Button></Button>
       </TimeBtn>
