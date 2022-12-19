@@ -9,4 +9,11 @@ export const GlobalStyle = createGlobalStyle`
 body {
     box-sizing: border-box;
 }
+
+button {
+    background-color: transparent;
+    outline: none;
+    border: 0px;
+    cursor: pointer;
+}
 `
