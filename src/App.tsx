@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
+import { GlobalStyle } from "./elem/global-style";
+import Shared from "./pages/shared";
 
 function App() {
   return (
     <div className="App">
-   Test render
+      <GlobalStyle />
+      <Shared />
     </div>
   );
 }
