@@ -28,7 +28,6 @@ const Container = styled.div`
   text-align: center;
   padding: 1rem 3%;
   flex-basis: auto;
-  flex-shrink: 0;
   width: 100%;
   max-width: 39rem;
 
@@ -48,6 +47,7 @@ const Title = styled.div`
   line-height: 3.25rem;
   padding-bottom: 0.5em;
 `;
+
 const Content = styled.div`
   font-family: "Google Sans", Roboto, Arial, sans-serif;
   font-size: 1.125rem;
