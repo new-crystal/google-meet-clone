@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Main from "./main/main";
+import Main from "./main/Main";
 
 const Shared = () => {
   return (
