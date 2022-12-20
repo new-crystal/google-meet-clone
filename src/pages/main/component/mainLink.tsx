@@ -47,6 +47,7 @@ const Title = styled.div`
   line-height: 3.25rem;
   padding-bottom: 0.5em;
 `;
+
 const Content = styled.div`
   font-family: "Google Sans", Roboto, Arial, sans-serif;
   font-size: 1.125rem;
