@@ -28,7 +28,6 @@ const Container = styled.div`
   text-align: center;
   padding: 1rem 3%;
   flex-basis: auto;
-  flex-shrink: 0;
   width: 100%;
   max-width: 39rem;
 
