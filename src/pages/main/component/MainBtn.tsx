@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { MdOutlineVideoCall } from "react-icons/md";
 
 const MainBtn = () => {
-  const [onFocused, setOnFocused] = useState(false);
-  console.log(onFocused);
+  const [onFocused, setOnFocused] = useState<boolean>(false);
 
   return (
     <Container>
@@ -17,7 +16,7 @@ const MainBtn = () => {
           setOnFocused(true);
         }}
       />
-      <JoinBtn view={onFocused}>참가</JoinBtn>
+      <JoinBtn view={onFocused}>참여</JoinBtn>
     </Container>
   );
 };
