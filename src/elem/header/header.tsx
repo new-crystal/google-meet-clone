@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import HeaderBtn from "./headerBtn";
-import HeaderTime from "./headerTime";
+import HeaderBtn from "./HeaderBtn";
+import HeaderTime from "./HeaderTime";
 
 const Header = () => {
   return (
