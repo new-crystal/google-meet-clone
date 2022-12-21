@@ -35,11 +35,13 @@ const ImgBox = styled.div`
   margin-left: 20px;
 `;
 
+//STImgLogo
 const LogoImg = styled.img`
   width: 190px;
   height: 65px;
 `;
 
+//STBoxTimeBtn
 const TimeBtnBox = styled.div`
   display: flex;
   align-items: center;
