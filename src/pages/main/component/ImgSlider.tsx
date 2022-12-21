@@ -21,8 +21,7 @@ const ImgSlider = () => {
     url: string;
     title: string;
     content: string;
-  };
-  'ㄴㅇㄹ'
+  }
 
   const imgList = [
     {

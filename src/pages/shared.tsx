@@ -7,8 +7,8 @@ const Shared = () => {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
-      <Route path="/meeting" />
-      <Route path="/join" element={<Join />}/>
+      <Route path="/meet/:roomId" />
+      <Route path="/join/:roomId" element={<Join />} />
       <Route path="*" element={<Main />} />
     </Routes>
   );
