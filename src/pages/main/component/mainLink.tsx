@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import MainBtn from "./MainBtn";
 
 const MainLink: React.FC = () => {
   return (
@@ -10,9 +11,7 @@ const MainLink: React.FC = () => {
         있도록 다시 설계했습니다.
       </Content>
       <div>
-        <button></button>
-        <input />
-        <button></button>
+        <MainBtn />
       </div>
     </Container>
   );
@@ -31,12 +30,12 @@ const Container = styled.div`
   width: 100%;
   max-width: 39rem;
 
-  @media screen {
+  /* @media screen {
     max-aspect-ratio: 3 / 4;
     min-height: 32rem;
     max-width: 60rem;
     min-height: 32rem;
-  }
+  } */
 `;
 
 const Title = styled.div`

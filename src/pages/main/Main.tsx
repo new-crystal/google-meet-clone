@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../../elem/header/header";
+import Header from "../../elem/header/Header";
 import styled from "styled-components";
-import MainLink from "./component/mainLink";
-import MainImg from "./component/mainImg";
+import MainLink from "./component/MainLink";
+import MainImg from "./component/MainImg";
 
 const Main = () => {
   return (
@@ -27,11 +27,11 @@ const MainContainer = styled.div`
   font-size: 1rem;
   animation: 0.5s ease-in fadeIn 0s forwards;
 
-  @media screen {
+  /* @media screen {
     height: calc(100vh - 3.5rem);
     max-aspect-ratio: 3 / 4;
     max-width: 60rem;
-  }
+  } */
 `;
 const MainBox = styled.div`
   align-items: center;
