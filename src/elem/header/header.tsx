@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import HeaderBtn from "./HeaderBtn";
-import HeaderTime from "./HeaderTime";
+import React from "react"
+import styled from "styled-components"
+import HeaderBtn from "./HeaderBtn"
+import HeaderTime from "./HeaderTime"
 
 const Header = () => {
   return (
@@ -15,8 +15,8 @@ const Header = () => {
       </TimeBtnBox>
       <LoginBtn></LoginBtn>
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   background-color: aliceblue;
@@ -27,18 +27,18 @@ const Container = styled.div`
   @media screen {
     min-width: 600px;
   }
-`;
+`
 const ImgBox = styled.div`
   background-color: aqua;
   width: 40vw;
   padding-right: 30px;
   margin-left: 20px;
-`;
+`
 
 const LogoImg = styled.img`
   width: 190px;
   height: 65px;
-`;
+`
 
 const TimeBtnBox = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ const TimeBtnBox = styled.div`
   justify-content: center;
   flex-direction: row;
   font-size: 18px;
-`;
+`
 
-const LoginBtn = styled.div``;
-export default Header;
+const LoginBtn = styled.div``
+export default Header
