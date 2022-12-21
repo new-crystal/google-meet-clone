@@ -3,17 +3,19 @@ import styled from "styled-components";
 import { IoMicOffOutline, IoMicOutline, IoVideocamOffOutline, IoVideocamOutline } from "react-icons/io5";
 
 
-const Join: React.FC = () => {
+const JoinNotLogIn: React.FC = () => {
     return (
         <Container>
             <Head>
                 <ImgBox>
                     <LogoImg src="https://res.cloudinary.com/softwarepundit/image/upload/c_lfill/dpr_1.0/f_auto/h_800/q_auto/w_800/v1/software/google-meet-logo" />
                 </ImgBox>
-                <Profile>
-                    @gmail.com
-                </Profile>
+                <ToLogIn>
+                    로그인
+                </ToLogIn>
             </Head>
+
+            
             <Body>
                 <CameraArea>
                     <Text>
@@ -32,17 +34,18 @@ const Join: React.FC = () => {
                 </CameraArea>
                 <Box>
                     <div>
-                        참여할 준비가 되셨나요?
+                        이름이 무엇인가요?
                     </div>
+                    <Input placeholder='이름'></Input>
                     <JoinBtn>
-                        참여하기
+                        참여요청
                     </JoinBtn>
                 </Box>
             </Body>
         </Container>
     )
 }
-export default Join;
+export default JoinNotLogIn;
 const Container = styled.div`
     
 `
@@ -61,8 +64,8 @@ const LogoImg = styled.img`
   height: 65px;
 `
 
-const Profile = styled.button`
-    color: #2a2a2a;
+const ToLogIn = styled.button`
+    color: rgb(55, 55, 251);
     font-size: medium;
     padding: 20px;
 `
@@ -90,10 +93,21 @@ const Box = styled.div`
     color: #2a2a2a;
 `
 
+const Input = styled.input`
+    outline: 0;
+    background: #f2f2f2;;
+    width: 300px;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 2px;
+    margin-top: 20px;
+`
 const JoinBtn = styled.button`
     outline: 0;
-    background: rgb(55, 55, 251);
-    color: white;
+    background: #f2f2f2;;
     width: 90px;
     height: 45px;
     border: 0;
@@ -102,8 +116,7 @@ const JoinBtn = styled.button`
     box-sizing: border-box;
     font-size: 14px;
     border-radius: 30px;
-    margin: 20px;
-    box-shadow: 2px 2px 2px lightgray;
+    color: #2a2a2a;
 `
 const CameraArea = styled.div`
     height: 400px;
