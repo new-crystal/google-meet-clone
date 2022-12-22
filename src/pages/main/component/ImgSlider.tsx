@@ -17,7 +17,7 @@ const ImgSlider = () => {
     centerPadding: "0px",
   };
 
-  interface img {
+  interface Img {
     url: string;
     title: string;
     content: string;
@@ -46,7 +46,7 @@ const ImgSlider = () => {
   return (
     <Container>
       <Slider {...settings}>
-        {imgList.map((img: img, i: number) => {
+        {imgList.map((img: Img, i: number) => {
           return (
             <ImgBox key={i} id={`${i}`}>
               <img src={img.url} alt="img" />
