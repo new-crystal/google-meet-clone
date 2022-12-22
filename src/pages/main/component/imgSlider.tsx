@@ -22,7 +22,7 @@ const ImgSlider = () => {
     title: string;
     content: string;
   };
-  'ㄴㅇㄹ'
+  
 
   const imgList = [
     {
