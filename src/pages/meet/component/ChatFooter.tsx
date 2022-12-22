@@ -1,13 +1,33 @@
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { CiPaperplane } from "react-icons/ci";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../api/firebase";
 
 const ChatFooter = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const onSubmit = async (event: any) => {
+    event.preventDefault();
+    const timeList = new Date().toLocaleTimeString().split(":");
+    const time = `${timeList[0]}:${timeList[1]}`;
+
+    const data = {
+      userNick: "susu",
+      chatTime: time,
+      content: inputRef.current?.value,
+    };
+    console.log(data);
+    await addDoc(collection(db, "chat"), data);
+  };
+
   return (
     <STChatFooterBox>
-      <STChatFooterInner>
+      <STChatFooterInner onSubmit={e => onSubmit(e)}>
         <STInputBox>
-          <STInput />
+          <STInput ref={inputRef} />
           <CiPaperplane
+            onClick={e => onSubmit(e)}
             style={{ width: "24px", height: "24px", margin: "10px" }}
           />
         </STInputBox>
