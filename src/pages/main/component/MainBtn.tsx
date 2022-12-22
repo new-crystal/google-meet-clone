@@ -10,8 +10,8 @@ const MainBtn = () => {
   const [onFocused, setOnFocused] = useState<boolean>(false);
   const [join, setJoin] = useState<boolean>(false);
   const navigate: NavigateFunction = useNavigate();
-  const inputRef = useRef<HTMLInputElement>(null);
   const id = nanoid();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   interface NavigateFunction {
     (to: To): void;
