@@ -17,7 +17,6 @@ const ChatFooter = () => {
       chatTime: time,
       content: inputRef.current?.value,
     };
-    console.log(data);
     await addDoc(collection(db, "chat"), data);
   };
 
