@@ -19,7 +19,6 @@ const ImgSlider = () => {
 
   interface Img {
     url: string;
-    s;
     title: string;
     content: string;
   }
