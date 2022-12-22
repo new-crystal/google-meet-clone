@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { collection, getDocs } from "firebase/firestore";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
@@ -43,9 +42,9 @@ const ChatBody = () => {
 
   return (
     <STChatBodyBox>
-      {chatData.map((chat: Chat) => {
+      {chatData.map((chat: Chat, i) => {
         return (
-          <STChat ref={scrollRef}>
+          <STChat key={i} ref={scrollRef}>
             <STChatNickTimeBox>
               <STChatNick>{chat.userNick}</STChatNick>
               <STChatTime>{chat.chatTime}</STChatTime>

@@ -27,7 +27,12 @@ const ChatFooter = () => {
           <STInput ref={inputRef} />
           <CiPaperplane
             onClick={e => onSubmit(e)}
-            style={{ width: "24px", height: "24px", margin: "10px" }}
+            style={{
+              width: "24px",
+              height: "24px",
+              margin: "10px",
+              cursor: "pointer",
+            }}
           />
         </STInputBox>
       </STChatFooterInner>

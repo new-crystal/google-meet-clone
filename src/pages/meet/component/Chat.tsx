@@ -15,7 +15,6 @@ const Chat = () => {
 };
 
 const STBoxChatRoom = styled.div`
-  border: 1px solid;
   background: var(--hotlane-background-color);
   border-left: 1px solid #f1f3f4;
   display: flex;
