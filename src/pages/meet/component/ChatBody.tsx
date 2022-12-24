@@ -13,26 +13,29 @@ interface ChatData extends Array<Chat> {}
 
 const ChatBody = () => {
   const [chatData, setChatData] = useState<ChatData>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const { roomId } = useParams();
   const database = getDatabase();
-
   const locate = ref(database, `chat/${roomId}`);
 
   useEffect(() => {
     getChatList();
   }, []);
 
+  useEffect(() => {
+    scrollRef.current!.scrollTop = scrollRef.current!.scrollHeight;
+  }, [chatData]);
+
   const getChatList = async () => {
     let obj = {};
     await onValue(locate, data => {
-      console.log(data.val());
       obj = data.val();
       setChatData(Object.values(obj));
     });
   };
 
   return (
-    <STChatBodyBox>
+    <STChatBodyBox ref={scrollRef}>
       {chatData.map((chat: Chat, i) => {
         return (
           <STChat key={i}>
