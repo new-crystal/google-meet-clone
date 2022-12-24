@@ -1,11 +1,21 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { db } from "../../../api/firebase";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useParams } from "react-router-dom";
 
 const ChatBody = () => {
-  const [chatData, setChatData] = useState<ChatData>([]);
+  //const [chatData, setChatData] = useState<ChatData>([]);
+  const [onChat, setOnChat] = useState();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { roomId } = useParams();
+  let data = [];
+  let chatData: ChatData | [] = [];
+  const database = getDatabase();
+
+  const locate = ref(database, `chat/${roomId}`);
+  onValue(locate, data => {
+    chatData = Object.values(data.val());
+  });
 
   interface Chat {
     chatTime: string;
@@ -15,30 +25,8 @@ const ChatBody = () => {
 
   interface ChatData extends Array<Chat> {}
 
-  const getChatList = async () => {
-    let chats: Chat[] = [];
-    const chatList = await getDocs(collection(db, "chat"));
-    chatList.forEach((chat): void => {
-      let chatTime = chat.data().chatTime;
-      let content = chat.data().content;
-      let userNick = chat.data().userNick;
-      chats.push({ chatTime, content, userNick });
-      setChatData(chats);
-    });
-  };
-
-  const scrollToBottom = useCallback(() => {
-    scrollRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-  }, [chatData]);
-
-  useEffect(() => {
-    getChatList();
-    scrollToBottom();
-  }, []);
+  useEffect(() => {}, [chatData]);
+  console.log(chatData);
 
   return (
     <STChatBodyBox>
