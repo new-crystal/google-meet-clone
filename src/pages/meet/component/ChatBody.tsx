@@ -20,14 +20,15 @@ const ChatBody = () => {
 
   useEffect(() => {
     getChatList();
-  }, [chatData]);
+  }, []);
 
   const getChatList = async () => {
     let obj = {};
-    onValue(locate, data => {
+    await onValue(locate, data => {
+      console.log(data.val());
       obj = data.val();
+      setChatData(Object.values(obj));
     });
-    setChatData(Object.values(obj));
   };
 
   return (
