@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { CiPaperplane } from "react-icons/ci";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../api/firebase";
+import { useParams } from "react-router-dom";
+import { getDatabase, ref, set } from "firebase/database";
 
 const ChatFooter = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { roomId } = useParams();
 
   const onSubmit = async (event: any) => {
     event.preventDefault();
@@ -16,6 +19,7 @@ const ChatFooter = () => {
       userNick: "susu",
       chatTime: time,
       content: inputRef.current?.value,
+      roomId: roomId,
     };
     await addDoc(collection(db, "chat"), data);
   };
