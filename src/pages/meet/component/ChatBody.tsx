@@ -3,36 +3,38 @@ import styled from "styled-components";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useParams } from "react-router-dom";
 
+interface Chat {
+  chatTime: string;
+  content: string;
+  userNick: string;
+}
+
+interface ChatData extends Array<Chat> {}
+
 const ChatBody = () => {
-  //const [chatData, setChatData] = useState<ChatData>([]);
-  const [onChat, setOnChat] = useState();
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [chatData, setChatData] = useState<ChatData>([]);
   const { roomId } = useParams();
-  let data = [];
-  let chatData: ChatData | [] = [];
   const database = getDatabase();
 
   const locate = ref(database, `chat/${roomId}`);
-  onValue(locate, data => {
-    chatData = Object.values(data.val());
-  });
 
-  interface Chat {
-    chatTime: string;
-    content: string;
-    userNick: string;
-  }
+  useEffect(() => {
+    getChatList();
+  }, [chatData]);
 
-  interface ChatData extends Array<Chat> {}
-
-  useEffect(() => {}, [chatData]);
-  console.log(chatData);
+  const getChatList = async () => {
+    let obj = {};
+    onValue(locate, data => {
+      obj = data.val();
+    });
+    setChatData(Object.values(obj));
+  };
 
   return (
     <STChatBodyBox>
       {chatData.map((chat: Chat, i) => {
         return (
-          <STChat key={i} ref={scrollRef}>
+          <STChat key={i}>
             <STChatNickTimeBox>
               <STChatNick>{chat.userNick}</STChatNick>
               <STChatTime>{chat.chatTime}</STChatTime>
