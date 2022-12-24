@@ -16,7 +16,12 @@ const ChatHeader = () => {
           <STSecondHeaderText>
             모든 사용자가 메시지를 보낼 수 있도록 허용
           </STSecondHeaderText>
-          <input type="range" min="0" max="1" style={{ width: "36px" }} />
+          <input
+            type="range"
+            min="0"
+            max="1"
+            style={{ width: "36px", accentColor: "#c7c7c7", cursor: "pointer" }}
+          />
         </STSecondHeaderBox>
       </div>
       <STThirdHeaderBox>
@@ -29,7 +34,7 @@ const ChatHeader = () => {
 };
 
 const STChatHeader = styled.div`
-  width: 300px;
+  width: 320px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,6 +51,8 @@ const STHeaderText = styled.div`
 `;
 
 const STHeaderCloseBox = styled.div`
+  cursor: pointer;
+  padding: 10px;
   border-radius: 50%;
   :hover {
     background-color: #eee;

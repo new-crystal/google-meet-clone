@@ -1,51 +1,44 @@
-import { async } from "@firebase/util";
-import { collection, getDocs } from "firebase/firestore";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { db } from "../../../api/firebase";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useParams } from "react-router-dom";
+
+interface Chat {
+  chatTime: string;
+  content: string;
+  userNick: string;
+}
+
+interface ChatData extends Array<Chat> {}
 
 const ChatBody = () => {
   const [chatData, setChatData] = useState<ChatData>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  interface Chat {
-    chatTime: string;
-    content: string;
-    userNick: string;
-  }
-
-  interface ChatData extends Array<Chat> {}
-
-  const getChatList = async () => {
-    let chats: Chat[] = [];
-    const chatList = await getDocs(collection(db, "chat"));
-    chatList.forEach((chat): void => {
-      let chatTime = chat.data().chatTime;
-      let content = chat.data().content;
-      let userNick = chat.data().userNick;
-      chats.push({ chatTime, content, userNick });
-      setChatData(chats);
-    });
-  };
-
-  const scrollToBottom = useCallback(() => {
-    scrollRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
-      inline: "nearest",
-    });
-  }, [chatData]);
+  const { roomId } = useParams();
+  const database = getDatabase();
+  const locate = ref(database, `chat/${roomId}`);
 
   useEffect(() => {
     getChatList();
-    scrollToBottom();
   }, []);
 
+  useEffect(() => {
+    scrollRef.current!.scrollTop = scrollRef.current!.scrollHeight;
+  }, [chatData]);
+
+  const getChatList = async () => {
+    let obj = {};
+    await onValue(locate, data => {
+      obj = data.val();
+      setChatData(Object.values(obj));
+    });
+  };
+
   return (
-    <STChatBodyBox>
-      {chatData.map((chat: Chat) => {
+    <STChatBodyBox ref={scrollRef}>
+      {chatData.map((chat: Chat, i) => {
         return (
-          <STChat ref={scrollRef}>
+          <STChat key={i}>
             <STChatNickTimeBox>
               <STChatNick>{chat.userNick}</STChatNick>
               <STChatTime>{chat.chatTime}</STChatTime>

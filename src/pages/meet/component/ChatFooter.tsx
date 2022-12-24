@@ -1,11 +1,15 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { CiPaperplane } from "react-icons/ci";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../../api/firebase";
+import { useParams } from "react-router-dom";
+import { database } from "../../../api/firebase";
+import { push, ref } from "firebase/database";
 
 const ChatFooter = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { roomId } = useParams();
+
+  const locate = ref(database, `chat/${roomId}`);
 
   const onSubmit = async (event: any) => {
     event.preventDefault();
@@ -16,8 +20,14 @@ const ChatFooter = () => {
       userNick: "susu",
       chatTime: time,
       content: inputRef.current?.value,
+      roomId: roomId,
     };
-    await addDoc(collection(db, "chat"), data);
+
+    push(locate, data);
+
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   };
 
   return (
@@ -27,7 +37,12 @@ const ChatFooter = () => {
           <STInput ref={inputRef} />
           <CiPaperplane
             onClick={e => onSubmit(e)}
-            style={{ width: "24px", height: "24px", margin: "10px" }}
+            style={{
+              width: "24px",
+              height: "24px",
+              margin: "10px",
+              cursor: "pointer",
+            }}
           />
         </STInputBox>
       </STChatFooterInner>
